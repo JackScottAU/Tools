@@ -1,46 +1,123 @@
+<!DOCTYPE html>
 <html>
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<title>Organ Pipe Calculator</title>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<!-- BootStrap Stuff -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+	
+	<!-- Google Adsense -->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	
+	<!-- PHP Initialisation -->
+	<?php
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		$pressure = isset($_GET['pressure']) ? $_GET['pressure'] : 2.00;
+		$sw = isset($_GET['sw']) ? $_GET['sw'] : 2.431;
+		$sd = isset($_GET['sd']) ? $_GET['sd'] : 3.084;
+		$hn = isset($_GET['hn']) ? $_GET['hn'] : 18;
+		$mh = isset($_GET['mh']) ? $_GET['mh'] : 0.3;
+		$ising = isset($_GET['ising']) ? $_GET['ising'] : 2.00;
+		$os = isset($_GET['os']) ? $_GET['os'] : 1;
+		$rank = isset($_GET['rank']) ? $_GET['rank'] : 4;
+		$pitch = isset($_GET['pitch']) ? $_GET['pitch'] : 440;
+	?>
 </head>
 <body>
-<table class="table">
-<thead>
-<tr>
-	<th>Note #</th>
-	<th>Note</th>
-	<th>Pitch</th>
-	<th>IW</th>
-	<th>ID</th>
-	<th>IL</th>
-	<th>MH</th>
-	<th>WST</th>
-	<th>Flow Rate</th>
-</tr>
-</thead>
-<tbody>
+<div class="container">
+	<h1 style="text-align: center;">Organ Pipe Calculator</h1>
+	
+	<!-- Banner Ad Unit -->
+	<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9448968331199066" data-ad-slot="4253773439" data-ad-format="auto"></ins>
+	<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+	<form class="form-horizontal" method="get" action="">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="pressure">Pressure</label>
+					<input type="text" name="pressure" id="pressure" class="form-control" value="<?= $pressure; ?>" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="sw">Starting Width</label>
+					<input type="text" name="sw" id="sw" class="form-control" value="<?= $sw; ?>" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="sd">Starting Depth</label>
+					<input type="text" name="sd" id="sd" class="form-control" value="<?= $sd; ?>" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="hn">Halving Number</label>
+					<input type="text" name="hn" id="hn" class="form-control" value="<?= $hn; ?>" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="mh">Mouth Height Ratio</label>
+					<input type="text" name="mh" id="mh" class="form-control" value="<?= $mh; ?>" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="ising">Ising Number</label>
+					<input type="text" name="ising" id="ising" class="form-control" value="<?= $ising; ?>" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="os">Open or Stopped</label>
+					<input type="text" name="os" id="os" class="form-control" value="<?= $os; ?>" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="rank">Pitch of Rank</label>
+					<input type="text" name="rank" id="rank" class="form-control" value="<?= $rank; ?>" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="pitch">Pitch of Middle A</label>
+					<input type="text" name="pitch" id="pitch" class="form-control" value="<?= $pitch; ?>" />
+				</div>
+			</div>
+		</div>
+		
+		<input type="submit" value="Calculate" class="btn btn-success" style="display: block; margin: auto;" />
+	</form>
+
+	<table class="table">
+	<thead>
+		<tr>
+			<th>Note #</th>
+			<th>Note</th>
+			<th>Pitch</th>
+			<th>IW</th>
+			<th>ID</th>
+			<th>IL</th>
+			<th>MH</th>
+			<th>WST</th>
+			<th>Flow Rate</th>
+		</tr>
+	</thead>
+	<tbody>
 <?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$pressure = 2.00;
-$sw = 2.431;
-$sd = 3.084;
-$hn = 18;
-$mh = 0.3;
-$ising = 2.00;
-$os = 1;
-$rank = 4;
-$pitch = 440;
-
 for($i=1;$i<=61;$i++)
 {
 	echo "<tr>";
@@ -63,8 +140,19 @@ for($i=1;$i<=61;$i++)
 	echo "</tr>";
 }
 ?>
-</tbody>
-</table>
+	</tbody>
+	</table>
+
+	<hr />
+	
+	<p>
+	This page was created based on formulas available from <a href="http://www.rwgiangiulio.com/math/pipescaling.htm">here</a>. Code available on GitHub <a href="https://github.com/JackScottAU/Tools/blob/master/organ-pipe-calculator.php">here</a>.
+	</p>
+
+	<!-- Banner Ad Unit -->
+	<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9448968331199066" data-ad-slot="4253773439" data-ad-format="auto"></ins>
+	<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 </body>
 </html>
 
