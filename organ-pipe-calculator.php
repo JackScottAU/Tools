@@ -14,15 +14,15 @@
 	<?php
 		$notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
-		$pressure = isset($_GET['pressure']) ? $_GET['pressure'] : 2.00;
-		$sw = isset($_GET['sw']) ? $_GET['sw'] : 2.431;
-		$sd = isset($_GET['sd']) ? $_GET['sd'] : 3.084;
-		$hn = isset($_GET['hn']) ? $_GET['hn'] : 18;
-		$mh = isset($_GET['mh']) ? $_GET['mh'] : 0.3;
-		$ising = isset($_GET['ising']) ? $_GET['ising'] : 2.00;
-		$os = isset($_GET['os']) ? $_GET['os'] : 1;
-		$rank = isset($_GET['rank']) ? $_GET['rank'] : 4;
-		$pitch = isset($_GET['pitch']) ? $_GET['pitch'] : 440;
+		$pressure = is_numeric($_GET['pressure']) && isset($_GET['pressure']) ? $_GET['pressure'] : 2.00;
+		$sw = is_numeric($_GET['sw']) && isset($_GET['sw']) ? $_GET['sw'] : 2.431;
+		$sd = is_numeric($_GET['sd']) && isset($_GET['sd']) ? $_GET['sd'] : 3.084;
+		$hn = is_numeric($_GET['hn']) && isset($_GET['hn']) ? $_GET['hn'] : 18;
+		$mh = is_numeric($_GET['mh']) && isset($_GET['mh']) ? $_GET['mh'] : 0.3;
+		$ising = is_numeric($_GET['ising']) && isset($_GET['ising']) ? $_GET['ising'] : 2.00;
+		$os = is_numeric($_GET['os']) && isset($_GET['os']) ? $_GET['os'] : 1;
+		$rank = is_numeric($_GET['rank']) && isset($_GET['rank']) ? $_GET['rank'] : 4;
+		$pitch = is_numeric($_GET['pitch']) && isset($_GET['pitch']) ? $_GET['pitch'] : 440;
 	?>
 </head>
 <body>
