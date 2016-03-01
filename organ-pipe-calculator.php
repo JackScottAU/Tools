@@ -12,9 +12,7 @@
 	
 	<!-- PHP Initialisation -->
 	<?php
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
+		$notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
 		$pressure = isset($_GET['pressure']) ? $_GET['pressure'] : 2.00;
 		$sw = isset($_GET['sw']) ? $_GET['sw'] : 2.431;
@@ -82,7 +80,10 @@
 			<div class="col-md-4">
 				<div class="form-group">
 					<label for="os">Open or Stopped</label>
-					<input type="text" name="os" id="os" class="form-control" value="<?= $os; ?>" />
+					<select name="os" id="os" class="form-control">
+						<option <?= $os==1 ? "selected" : "" ?> value="1">Open</option>
+						<option <?= $os==2 ? "selected" : "" ?> value="2">Closed</option>
+					</select>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -107,13 +108,13 @@
 		<tr>
 			<th>Note #</th>
 			<th>Note</th>
-			<th>Pitch</th>
-			<th>IW</th>
-			<th>ID</th>
-			<th>IL</th>
-			<th>MH</th>
-			<th>WST</th>
-			<th>Flow Rate</th>
+			<th>Pitch (Hz)</th>
+			<th>IW (in)</th>
+			<th>ID (in)</th>
+			<th>IL (in)</th>
+			<th>MH (in)</th>
+			<th>WST (in)</th>
+			<th>Flow Rate (cfm)</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -122,7 +123,9 @@ for($i=1;$i<=61;$i++)
 {
 	echo "<tr>";
 	echo "<td>$i</td>";
-	echo "<td>TODO</td>";
+	$i_note = $notes[($i-1) % 12];
+	$i_note2 = floor(($i-1) / 12)+3;
+	echo "<td>$i_note<sub>$i_note2</sub></td>";
 	$i_pitch = round($pitch/pow(2,((log($rank)/log(2)*12-$i-2)/12)), 2);
 	echo "<td>$i_pitch</td>";
 	$i_iw = round($sw/pow(2,(($i-1)/($hn-1))), 4);
