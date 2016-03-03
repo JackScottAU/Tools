@@ -32,17 +32,17 @@
 	<form class="form-horizontal" method="get" action="">
 		<div class="form-group">
 			<label for="price">Price per Litre</label>
-			<input type="text" name="price" id="price" class="form-control" value="" />
+			<input type="text" name="price" id="price" class="form-control" value="<?= is_numeric($_GET['price']) ? $_GET['price'] : "" ?>" />
 		</div>
 		
 		<div class="form-group">
 			<label for="litres">Litres</label>
-			<input type="text" name="litres" id="litres" class="form-control" value="" />
+			<input type="text" name="litres" id="litres" class="form-control" value="<?= is_numeric($_GET['litres']) ? $_GET['litres'] : "" ?>" />
 		</div>
 
 		<div class="form-group">
 			<label for="distance">Distance</label>
-			<input type="text" name="distance" id="distance" class="form-control" value="" />
+			<input type="text" name="distance" id="distance" class="form-control" value="<?= is_numeric($_GET['distance']) ? $_GET['distance'] : "" ?>" />
 		</div>
 		
 		<input type="submit" name="submit" value="Calculate" class="btn btn-success" style="display: block; margin: auto;" />
