@@ -60,6 +60,10 @@
 		echo ($litres / $distance) * 100;
 		echo '</td></tr>';
 		
+		echo '<tr><th>$/km</th><td>';
+		echo ($litres * $price) / $distance;
+		echo '</td></tr>';
+		
 		echo '</tbody></table>';
 	}
 ?>
