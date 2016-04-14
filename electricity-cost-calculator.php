@@ -55,7 +55,6 @@
 		$hours = $_GET['hours'];
 		
 		$pricewhenon = ($price * $wattage);
-		$hoursperday = (24 / $hours);
 		
 		echo '<table class="table"><tbody>';
 		
@@ -64,19 +63,19 @@
 		echo '</td></tr>';
 		
 		echo '<tr><th>$/day<td>';
-		echo $pricewhenon * $hoursperday;
+		echo $pricewhenon * $hours;
 		echo '</td></tr>';
 		
 		echo '<tr><th>$/week<td>';
-		echo $pricewhenon * $hoursperday * (365.25 / 52);
+		echo $pricewhenon * $hours * (365.25 / 52);
 		echo '</td></tr>';
 		
 		echo '<tr><th>$/month<td>';
-		echo $pricewhenon * $hoursperday * (365.25 / 12);
+		echo $pricewhenon * $hours * (365.25 / 12);
 		echo '</td></tr>';
 		
 		echo '<tr><th>$/year<td>';
-		echo $pricewhenon * $hoursperday * 365.25;
+		echo $pricewhenon * $hours * 365.25;
 		echo '</td></tr>';
 		
 		echo '</tbody></table>';
