@@ -54,14 +54,29 @@
 		$wattage = $_GET['wattage']/1000; // Convert to kilowatts.
 		$hours = $_GET['hours'];
 		
+		$pricewhenon = ($price * $wattage);
+		$hoursperday = (24 / $hours);
+		
 		echo '<table class="table"><tbody>';
 		
 		echo '<tr><th>$/hour (when on)</th><td>';
-		echo ($price * $wattage);
+		echo $pricewhenon;
 		echo '</td></tr>';
 		
 		echo '<tr><th>$/day<td>';
-		echo ($price * $wattage) / ($hours / 24);
+		echo $pricewhenon / $hoursperday;
+		echo '</td></tr>';
+		
+		echo '<tr><th>$/week<td>';
+		echo $pricewhenon / $hoursperday * (365.25 / 52);
+		echo '</td></tr>';
+		
+		echo '<tr><th>$/month<td>';
+		echo $pricewhenon / $hoursperday * (365.25 / 12);
+		echo '</td></tr>';
+		
+		echo '<tr><th>$/year<td>';
+		echo $pricewhenon / $hoursperday * 365.25;
 		echo '</td></tr>';
 		
 		echo '</tbody></table>';
