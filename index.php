@@ -34,6 +34,7 @@
 	<ul>
 		<li><a href="./organ-pipe-calculator.php">Organ Pipe Calculator</a></li>
 		<li><a href="./fuel-consumption-calculator.php">Fuel Consumption Calculator</a></li>
+		<li><a href="./electricity-cost-calculator.php">Electricity Cost Calculator</a></li>
 	</ul>
 	
 	<hr />
